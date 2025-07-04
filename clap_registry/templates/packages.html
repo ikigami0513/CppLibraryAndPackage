@@ -10,7 +10,7 @@
             <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow hover:shadow-md transition min-h-[220px] flex flex-col justify-between">
                 <div>
                     <h3 class="text-lg font-bold text-sky-700 mb-1 flex items-center justify-between">
-                        <span>{{ package.name }}</span>
+                        <a href="{% url "package_detail" package_name=package.name %}" class="underline">{{ package.name }}</a>
                         <span>{{ package.latest }}</span>
                     </h3>
                     <p class="text-sm text-slate-500 mb-2">{{ package.description }}</p>

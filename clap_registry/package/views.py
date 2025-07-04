@@ -35,6 +35,14 @@ class PackageInfoView(View):
             "download_url": download_url,
             "target_library": vp.target_library
         })
+    
+
+class PackageDetailView(View):
+    def get(self, request: HttpRequest, package_name: str) -> HttpResponse:
+        package = get_object_or_404(Package, name=package_name)
+        return render(request, "package.html", {
+            "package": package
+        })
 
 
 class PackageDownloadView(View):

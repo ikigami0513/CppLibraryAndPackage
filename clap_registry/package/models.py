@@ -21,6 +21,7 @@ class Package(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=500)
     description = models.TextField(null=True, blank=True)
+    repository_url = models.URLField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
@@ -35,7 +36,7 @@ class Package(models.Model):
 
 class VersionPackage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE, related_name="versions")
     version = models.CharField(max_length=50)
     file = models.FileField(upload_to=package_upload_path, validators=[validate_zip_file])
     is_latest = models.BooleanField(default=False)
