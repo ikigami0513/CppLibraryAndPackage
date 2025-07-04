@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-50 text-slate-800">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}{% endblock title %} | Clap</title>
+        <link rel="icon" type="image/x-icon" href="{% static "logo.png" %}">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+            };
+        </script>
+    </head>
+    <body class="bg-background text-slate-800">
+        <!-- Navbar -->
+        <header class="bg-sky-500 shadow-sm mb-6">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-sky-900 flex items-center justify-between"> 
+                    <img src="{% static "logo.png" %}" class="h-12" />
+                    <span>Clap Packages</span>
+                </h1>
+                <nav class="flex items-center justify-between gap-6">
+                    <a href="{% url 'index_view' %}" class="text-sky-800 hover:text-sky-900 text-sm font-medium transition-colors">
+                        Home
+                    </a>
+                    <a href="{% url 'package_list' %}" class="text-sky-800 hover:text-sky-900 text-sm font-medium transition-colors">
+                        Packages
+                    </a>
+                    <a href="{% url 'documentation_view' %}" class="text-sky-800 hover:text-sky-900 text-sm font-medium transition-colors">
+                        Documentation
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Package List -->
+        <main class="max-w-7xl mx-auto px-4 pb-10">
+            {% block content %}{% endblock content %}
+        </main>
+
+    </body>
+</html>

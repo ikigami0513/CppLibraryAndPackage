@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Packages{% endblock title %}
+
+{% block content %}
+    <h2 class="text-xl font-semibold text-slate-900 mb-6">Available Packages</h2>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {% for package in packages %}
+            <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow hover:shadow-md transition min-h-[220px] flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-sky-700 mb-1 flex items-center justify-between">
+                        <span>{{ package.name }}</span>
+                        <span>{{ package.latest }}</span>
+                    </h3>
+                    <p class="text-sm text-slate-500 mb-2">{{ package.description }}</p>
+                </div>
+                <div class="mt-4">
+                    <a href="{% url 'download_latest' package_name=package.name %}"
+                        class="inline-block text-sm bg-sky-500 hover:bg-sky-700 text-white px-4 py-2 rounded-lg font-medium transition">
+                        ⬇️ Download
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

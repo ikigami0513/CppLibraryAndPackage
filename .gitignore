@@ -1,0 +1,13 @@
+*.pyc
+
+build/
+.vscode/
+dist/
+venv/
+clap.spec
+
+clap_registry/media
+clap_registry/.env
+
+tests/build
+tests/packages

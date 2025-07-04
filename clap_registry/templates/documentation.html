@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}Documentation{% endblock title %}
+
+{% block content %}
+<section class="mb-16">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-sky-700 mb-2">📘 Clap Documentation</h2>
+        <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+            Everything you need to know to get started, manage your packages, and build C++ projects with Clap.
+        </p>
+    </div>
+
+    <!-- Section block -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <!-- Getting Started -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">🔰 Getting Started</h3>
+            <p class="mb-2 text-sm text-slate-700">Install Clap globally using executable:</p>
+            <a href="{% url "download_clap_latest" %}" class="inline-block text-sm bg-sky-500 hover:bg-sky-700 text-white px-4 py-2 rounded-lg font-medium transition">Download latest version</a>
+            <p class="mt-2 text-sm">Verify with:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap --help</code></pre>
+        </div>
+
+        <!-- Init -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">📦 Create a New Project</h3>
+            <p class="mb-2 text-sm">Generate a boilerplate C++ project:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap init</code></pre>
+            <p class="mt-2 text-sm">Sets up folders and a configured <code>CMakeLists.txt</code>.</p>
+        </div>
+
+        <!-- Install -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">📥 Install Packages</h3>
+
+            <p class="text-sm">Add a package to your project:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap install spdlog</code></pre>
+
+            <p class="text-sm mt-2">Specify a version if needed:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap install spdlog --version 1.15.3</code></pre>
+
+            <p class="text-sm mt-2">Install all missing packages in clap_package.json</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap install</code></pre>
+        </div>
+
+        <!-- List -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">📃 List Installed Packages</h3>
+            <p class="text-sm">Display all installed packages:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap list</code></pre>
+        </div>
+
+        <!-- Build / Run -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">⚙️ Build & Run</h3>
+
+            <p class="text-sm mb-1">Compile your project:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap build</code></pre>
+
+            <p class="text-sm mt-2 mb-1">Execute the built binary:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap run</code></pre>
+        </div>
+
+        <!-- Uninstall / Update -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">🧹 Uninstall / Update</h3>
+
+            <p class="text-sm mb-1">Remove a package:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap uninstall glm</code></pre>
+
+            <p class="text-sm mt-3 mb-1">Update a package:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap update fmt</code></pre>
+            
+            <p class="text-sm mt-2">Update all packages:</p>
+            <pre class="bg-slate-100 text-sm p-3 rounded-md overflow-x-auto"><code>clap update --all</code></pre>
+        </div>
+
+        <!-- File Structure -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200 md:col-span-2">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">📁 File Structure Overview</h3>
+            <ul class="text-sm list-disc list-inside text-slate-700">
+                <li><code>packages/</code> - third-party libraries</li>
+                <li><code>src/</code> - your C++ sources</li>
+                <li><code>include/</code> - your headers</li>
+                <li><code>CMakeLists.txt</code> - auto-managed build file</li>
+            </ul>
+        </div>
+
+        <!-- Publishing -->
+        <div class="bg-white shadow-md rounded-xl p-6 border border-gray-200 md:col-span-2">
+            <h3 class="text-2xl font-semibold text-sky-600 mb-3">🚀 Publishing New Packages</h3>
+            <p class="text-sm mb-2">To contribute packages or host your own repository, follow the official guide (coming soon). You can also explore public packages:</p>
+            <a href="{% url 'package_list' %}" class="inline-block mt-2 bg-sky-600 text-white text-sm font-medium px-4 py-2 rounded hover:bg-sky-700 transition">
+                Browse Packages →
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}
