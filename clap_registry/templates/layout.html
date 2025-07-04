@@ -18,11 +18,23 @@
         <!-- Navbar -->
         <header class="bg-sky-500 shadow-sm mb-6">
             <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-                <h1 class="text-2xl font-bold text-sky-900 flex items-center justify-between"> 
+                <!-- Logo -->
+                <a href="{% url "index_view" %}" class="text-2xl font-bold text-sky-900 flex items-center gap-2"> 
                     <img src="{% static "logo.png" %}" class="h-12" />
                     <span>Clap Packages</span>
-                </h1>
-                <nav class="flex items-center justify-between gap-6">
+                </a>
+
+                <!-- Hamburger button (mobile only) -->
+                <button id="menu-toggle" class="sm:hidden text-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Navigation links -->
+                <nav id="menu" class="hidden sm:flex items-center gap-6 sm:gap-6">
                     <a href="{% url 'index_view' %}" class="text-sky-800 hover:text-sky-900 text-sm font-medium transition-colors">
                         Home
                     </a>
@@ -34,12 +46,35 @@
                     </a>
                 </nav>
             </div>
+
+            <!-- Mobile menu (dropdown) -->
+            <div id="mobile-menu" class="sm:hidden px-4 pb-4 hidden">
+                <nav class="flex flex-col gap-2">
+                    <a href="{% url 'index_view' %}" class="text-sky-900 hover:text-sky-800 text-sm font-medium transition-colors">
+                        Home
+                    </a>
+                    <a href="{% url 'package_list' %}" class="text-sky-900 hover:text-sky-800 text-sm font-medium transition-colors">
+                        Packages
+                    </a>
+                    <a href="{% url 'documentation_view' %}" class="text-sky-900 hover:text-sky-800 text-sm font-medium transition-colors">
+                        Documentation
+                    </a>
+                </nav>
+            </div>
         </header>
 
-        <!-- Package List -->
+        <!-- Content -->
         <main class="max-w-7xl mx-auto px-4 pb-10">
             {% block content %}{% endblock content %}
         </main>
 
+        <script>
+            const toggleButton = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            toggleButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        </script>
     </body>
 </html>
