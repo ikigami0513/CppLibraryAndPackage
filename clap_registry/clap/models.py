@@ -13,7 +13,7 @@ def validate_exe_file(value):
 def clap_upload_path(instance: 'ClapVersion', filename: str) -> str:
     safe_version = instance.version.replace(' ', '_')
     filename = f"clap-{safe_version}.exe"
-    return os.path.join("packages", filename)
+    return os.path.join("claps/", filename)
     
 
 class ClapVersion(models.Model):

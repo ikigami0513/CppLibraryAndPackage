@@ -108,7 +108,7 @@ class InstallCommand(Command):
             print("⚠️ Warning: CMakeLists.txt not found. Skipping CMake update.")
             return
         
-        line_to_add = f"add_subdirectory({self.install_dir}/{package_name})"
+        line_to_add = f"add_subdirectory(${{CMAKE_CURRENT_SOURCE_DIR}}/{self.install_dir}/{package_name})"
 
         with open(self.cmake_file, "r", encoding="utf-8") as f:
             content = f.read()

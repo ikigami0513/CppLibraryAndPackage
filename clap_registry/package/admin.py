@@ -9,7 +9,7 @@ class VersionPackageInline(admin.TabularInline):
 
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
-    list_display = ["name", "description"]
+    list_display = ["name", "description", "repository_url"]
     inlines = [VersionPackageInline]
 
 

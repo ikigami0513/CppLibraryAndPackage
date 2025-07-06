@@ -9,5 +9,4 @@ clap.spec
 clap_registry/media
 clap_registry/.env
 
-tests/build
-tests/packages
+opengl_project/

@@ -27,6 +27,7 @@ def main():
 
     init_parser = subparsers.add_parser("init", help="Initialize a project")
     init_parser.add_argument("name", type=str, help="Project name")
+    init_parser.add_argument("--template", type=str, required=False, help="Specify a project template to use")
 
     install_parser = subparsers.add_parser("install", help="Install a package")
     install_parser.add_argument("name", type=str, nargs="?", help="Package name")
